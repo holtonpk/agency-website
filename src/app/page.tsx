@@ -337,7 +337,7 @@ const testimonials = [
   },
 ];
 
-export function Faq() {
+function Faq() {
   const questions = [
     {q: "Who is this for?", a: "answer here"},
     {
