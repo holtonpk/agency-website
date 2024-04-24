@@ -1,19 +1,31 @@
 "use client";
 import React, {useEffect} from "react";
 import {Button} from "@/components/ui/button";
-import {LucideProps, Star, ChevronLeft} from "lucide-react";
+import {LucideProps, Star, ChevronLeft, ArrowRight} from "lucide-react";
 import Background from "@/components/background";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {IncomingMessage} from "http";
 const HomePage = () => {
   return (
-    <div className="bg-[#181818]  ">
-      <Navbar />
-      <Background />
-      <div className="h-screen rounded-b-[30px] bg-background">
-        <Hero />
-        <Stats />
+    <>
+      <div className="bg-[#181818]  ">
+        <Navbar />
+        <Background />
+        <div className="h-screen rounded-b-[30px] bg-background">
+          <Hero />
+          <Stats />
+        </div>
+        <Testimonials />
+        <FAQ />
+        <ContactUs />
       </div>
-      <Testimonials />
-    </div>
+      <Footer />
+    </>
   );
 };
 
@@ -332,3 +344,54 @@ const testimonials = [
     creator: "-",
   },
 ];
+
+export function FAQ() {
+  const questions = [
+    {q: "Who is this for?", a: "answer here"},
+    {
+      q: "Why should  I need to invest in short form content?",
+      a: "answer here",
+    },
+    {
+      q: "Why choose Whitespace Media?",
+      a: "answer here",
+    },
+    {
+      q: "What can I expect from you guys?",
+      a: "20 posts a month, comment replies, story posts etc. Report and monthly call. \n\n Talk about system efficiency",
+    },
+  ];
+
+  return (
+    <div className="flex flex-col relative container items-center mb-20">
+      <h1 className="text-[10rem] leading-[160px] font1 text-primary">FAQ</h1>
+      <Accordion type="single" collapsible className="w-[90%] ">
+        {questions.map((question, index) => (
+          <AccordionItem key={index} value={question.q}>
+            <AccordionTrigger className="font-bold text-2xl">
+              {question.q}
+            </AccordionTrigger>
+            <AccordionContent className=" text-2xl">
+              {question.a}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
+  );
+}
+
+const ContactUs = () => {
+  return (
+    <div className="container relative">
+      <button className="relative w-[90%] mx-auto rounded-full h-[400px] border-4 flex items-center justify-center text-8xl font1 mb-20 font-bold hover:bg-[#181818] hover:text-background transition-colors duration-500 group">
+        Contact Us
+        <ArrowRight className="h-16 w-16 ml-4 group-hover:translate-x-[50px] transition-transform duration-500" />
+      </button>
+    </div>
+  );
+};
+
+const Footer = () => {
+  return <div className="w-full h-[200px] bg-[#181818] relative "></div>;
+};
