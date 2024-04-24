@@ -21,7 +21,7 @@ const HomePage = () => {
           <Stats />
         </div>
         <Testimonials />
-        <FAQ />
+        <Faq />
         <ContactUs />
       </div>
       <Footer />
@@ -320,10 +320,6 @@ const Testimonials = () => {
 
 const testimonials = [
   {
-    text: "  1",
-    creator: "-Jon doe",
-  },
-  {
     text: "   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel tincidunt libero. Aliquam erat volutpat. Nullam nec liberonec massa tincidunt condimentum. Nullam nec libero nec massatincidunt condimentum.",
     creator: "-Jon ",
   },
@@ -339,13 +335,9 @@ const testimonials = [
     text: "   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel tincidunt libero. Aliquam erat volutpat. Nullam nec liberonec massa tincidunt condimentum. Nullam nec libero nec massatincidunt condimentum.",
     creator: "-3",
   },
-  {
-    text: "   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel tincidunt libero. Aliquam erat volutpat. Nullam nec liberonec massa tincidunt condimentum. Nullam nec libero nec massatincidunt condimentum.",
-    creator: "-",
-  },
 ];
 
-export function FAQ() {
+export function Faq() {
   const questions = [
     {q: "Who is this for?", a: "answer here"},
     {
