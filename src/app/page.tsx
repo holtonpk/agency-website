@@ -55,7 +55,7 @@ const Hero = () => {
       clearInterval(newSkillInterval);
       clearInterval(oldSkillInterval);
     };
-  }, []);
+  }, [skills.length]);
 
   return (
     <div className="container z-30 relative pt-28 flex flex-col items-center gap-10">
@@ -82,11 +82,11 @@ const Hero = () => {
 
         <div className="flex flex-col w-[500px]">
           <p className="text-xl font-bold">
-            Elevate your brand's social media presence with viral-worthy organic
-            content that drives real impressions and builds community.
+            Elevate your brand&apos;s social media presence with viral-worthy
+            organic content that drives real impressions and builds community.
             <br />
             <br />
-            We’ve generated millions of impressions for our clients using a
+            We&apos;ve generated millions of impressions for our clients using a
             formula perfected over a decade of experimentation with social
             content.
           </p>
@@ -186,7 +186,10 @@ const Stats = () => {
       {/* <div className="blue-blob"></div> */}
       {/* <div className="purple-blob"></div> */}
       {stats.map((stat, index) => (
-        <div className="flip-card w-full aspect-square stat-animation">
+        <div
+          key={index}
+          className="flip-card w-full aspect-square stat-animation"
+        >
           <div className="flip-card-inner">
             <div
               key={index}
