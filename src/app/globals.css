@@ -336,7 +336,7 @@
 }
 
 #stat-container > div:nth-child(2) {
-  animation-delay: 400ms; /* Delays the animation of the fourth child by 800ms */
+  animation-delay: 600ms; /* Delays the animation of the fourth child by 800ms */
 }
 
 #stat-container > div:nth-child(1) {

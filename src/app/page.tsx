@@ -210,25 +210,32 @@ const Stats = () => {
 
 const Testimonials = () => {
   const [selectedTestimonial, setSelectedTestimonial] = React.useState(1);
-  const testimonialContainer = React.useRef(null);
+  const testimonialContainer = React.useRef<HTMLDivElement>(null);
 
-  const scrollToCenter = (index) => {
-    const child = testimonialContainer.current.children[index + 6]; // Direct access if no spacer divs
+  const scrollToCenter = (index: number): void => {
+    if (!testimonialContainer.current) return;
+
+    const child = testimonialContainer.current.children[
+      index + 6
+    ] as HTMLElement; // Direct access if no spacer divs
+    if (!child) return;
+
     const leftOffset =
       child.offsetLeft +
       child.offsetWidth / 2 -
       testimonialContainer.current.offsetWidth / 2;
+
     testimonialContainer.current.scrollTo({
       left: leftOffset,
       behavior: "smooth",
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     scrollToCenter(selectedTestimonial);
   }, [selectedTestimonial]);
 
-  const updateSelectedTestimonial = (newIndex) => {
+  const updateSelectedTestimonial = (newIndex: number): void => {
     if (newIndex < 0) {
       newIndex = testimonials.length - 1; // Loop to the end
     } else if (newIndex >= testimonials.length) {
