@@ -97,6 +97,7 @@ const Banner = () => {
       <div className="flex absolute left-0 gap-6 cred-carousel-animation top-1/2">
         {skills.map((skill, index) => (
           <h1
+            key={index}
             className={`text-10xl whitespace-nowrap  font-bold
           ${index % 2 === 0 ? "normal" : "stroke"}
           
@@ -170,8 +171,8 @@ const Hero = () => {
           <br /> your startup
         </h1>
         <p className="text-xl text-center w-full">
-          We elevate your brand's social media presence with organic content
-          that drives real impressions and lasting builds community.
+          We elevate your brand&apos;s social media presence with organic
+          content that drives real impressions and lasting builds community.
         </p>
         <div className="h-[180px] w-[180px] relative group  mt-4">
           <svg
@@ -353,7 +354,7 @@ const StatNumber = ({value}: {value: number}) => {
         duration: 3,
       });
     }
-  }, [inView, value]); // Trigger animation on visibility change or value change
+  }, [inView, value, count]); // Trigger animation on visibility change or value change
 
   return (
     <div className="flex items-start w-fit mt-4">
