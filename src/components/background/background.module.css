@@ -38,50 +38,36 @@
 }
 
 .content {
-  height: fit-content;
+  height: 500px;
+  height: 50%;
   width: 100%;
-  max-width: 800px;
+
   background-image: radial-gradient(
-      at var(--pos1-x) var(--pos1-y),
-      hsl(var(--orange)) 0px,
-      hsla(125, 98%, 72%, 0) 50%
+      ellipse at 90% 80%,
+      rgba(255, 255, 0, 1) 0%,
+      rgba(255, 255, 0, 0) 40%
     ),
     radial-gradient(
-      at var(--pos2-x) var(--pos2-y),
-      hsl(var(--green)) 0px,
-      hsla(354, 98%, 61%, 0) 50%
+      ellipse at 40% 60%,
+      rgb(133, 216, 163) 0%,
+      rgb(190, 217, 200, 0) 50%
     ),
     radial-gradient(
-      at var(--pos3-x) var(--pos3-y),
-      hsl(var(--purple)) 0px,
-      hsla(256, 96%, 67%, 0) 50%
+      ellipse at 50% 100%,
+      rgb(247, 185, 86) 0%,
+      rgb(252, 207, 136, 0) 80%
     ),
     radial-gradient(
-      at var(--pos4-x) var(--pos4-y),
-      hsl(var(--blue)) 0px,
-      hsla(38, 60%, 74%, 0) 50%
-    ),
-    radial-gradient(
-      at var(--pos5-x) var(--pos5-y),
-      hsl(var(--green)) 0px,
-      hsla(222, 67%, 73%, 0) 50%
-    ),
-    radial-gradient(
-      at var(--pos6-x) var(--pos6-y),
-      hsl(var(--blue)) 0px,
-      hsla(343, 68%, 79%, 0) 50%
+      ellipse at 10% 80%,
+      rgb(203, 132, 247) 0%,
+      rgb(243, 224, 255, 0) 100%
     );
-
-  animation: moveGradients 20s infinite ease-in-out;
   position: absolute;
+  overflow: hidden;
   content: "";
-  width: 100%;
-  height: 100%;
-
   filter: saturate(150%) blur(100px);
   -webkit-filter: saturate(150%) blur(100px);
-  top: 80px;
-  opacity: 0.2;
+  bottom: 0px;
 }
 
 @keyframes moveGradients {

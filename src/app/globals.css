@@ -55,10 +55,10 @@
     --blue: 212 90% 58%;
     --purple: 259 82% 67%;
     /* Initial positions */
-    --pos1-x: 97%;
-    --pos1-y: 21%;
-    --pos2-x: 52%;
-    --pos2-y: 99%;
+    --pos1-x: 50%;
+    --pos1-y: 0%;
+    --pos2-x: 0%;
+    --pos2-y: 39%;
     --pos3-x: 10%;
     --pos3-y: 29%;
     --pos4-x: 97%;
@@ -86,7 +86,7 @@
 }
 
 .b-b {
-  border: 1px solid blue;
+  border: 1px solid rgb(0, 0, 255);
 }
 
 .b-r {
@@ -122,7 +122,7 @@
 .testimonial-container {
   width: 100%;
   max-width: 100vw;
-  height: 500px;
+  height: 250px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -140,11 +140,11 @@
 }
 
 .centered {
-  height: 500px;
+  height: 250px;
 }
 
 .not-centered {
-  height: 350px;
+  height: 150px;
 }
 
 @keyframes jumbo {
@@ -188,7 +188,7 @@
   filter: blur(10px) invert(100%);
 
   mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
-  /* opacity: 30%; */
+  opacity: 30%;
   pointer-events: none;
 }
 
@@ -349,5 +349,68 @@
   }
   to {
     transform: rotateY(0deg);
+  }
+}
+
+.stroke {
+  /* font: 800 80px Arial;
+   */
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 150px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px;
+}
+
+.normal {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 150px;
+}
+
+.cred-carousel-animation {
+  animation: cred-carousel 300s linear infinite;
+}
+
+@keyframes cred-carousel {
+  0% {
+    transform: translate(0%, -50%);
+  }
+  100% {
+    transform: translate(-80%, -50%);
+  }
+}
+
+.hero-animate-spin {
+  animation: spin 10s reverse linear infinite;
+}
+
+.loading-screen-animation {
+  animation: loading-screen 1s ease-in-out forwards;
+  animation-delay: 3s;
+}
+
+@keyframes loading-screen {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-100%);
+    display: hidden;
+  }
+}
+
+.loading-screen-loader {
+  animation: loading-screen-loader 2.85s ease-in-out forwards;
+}
+
+@keyframes loading-screen-loader {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
   }
 }
