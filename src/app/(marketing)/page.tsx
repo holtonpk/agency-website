@@ -536,7 +536,7 @@ const ContactUs = () => {
   );
 };
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <div className="w-full h-fit bg-primary relative p-2 pt-6 flex flex-col gap-3 items-center">
       <div className="flex items-center mx-auto">
