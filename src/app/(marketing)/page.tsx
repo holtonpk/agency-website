@@ -29,7 +29,8 @@ import {
   delay,
 } from "framer-motion";
 import {useInView} from "react-intersection-observer";
-
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 const HomePage = () => {
   return (
     <>
@@ -219,33 +220,6 @@ const Hero = () => {
             Book Now
           </motion.button>
         </div>
-      </div>
-    </div>
-  );
-};
-
-export const Navbar = () => {
-  return (
-    <div className="relative top-0 h-fit py-4 w-screen flex justify-between items-center px-8 bg-transparent">
-      <Link className="flex items-center" href="/">
-        <Logo className="fill-primary h-10 mb-1" />
-        <h1 className="text-4xl font1 ml-2">Whitespace Media</h1>
-      </Link>
-      <div className="flex gap-8 ml-auto items-center">
-        <Link href="/#stats" className=" capitalize">
-          about
-        </Link>
-        <button className="text-primary capitalize">Our Work</button>
-
-        <Link
-          href="/contact"
-          className={cn(
-            buttonVariants({variant: "outline"}),
-            " capitalize rounded-2xl bg-primary text-background hover:bg-primary hover:text-background transition-colors duration-500"
-          )}
-        >
-          Contact
-        </Link>
       </div>
     </div>
   );
@@ -571,20 +545,6 @@ const ContactUs = () => {
         Let&apos;s get Started
         <ArrowRight className="h-16 w-16 ml-4 group-hover:translate-x-[50px] transition-transform duration-500" />
       </Link>
-    </div>
-  );
-};
-
-export const Footer = () => {
-  return (
-    <div className="w-full h-fit bg-primary relative p-2 pt-6 flex flex-col gap-3 items-center">
-      <div className="flex items-center mx-auto">
-        <Logo className="fill-white h-10 mb-1" />
-        <h1 className="text-4xl text-white font1 ml-2">Whitespace Media</h1>
-      </div>
-      <h1 className="text-white/60">
-        © 2024 Whitespace Media. All rights reserved.
-      </h1>
     </div>
   );
 };

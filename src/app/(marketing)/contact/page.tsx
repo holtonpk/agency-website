@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import Background from "@/components/background";
-import {Navbar, Footer} from "../page";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
