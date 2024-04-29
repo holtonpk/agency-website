@@ -44,24 +44,16 @@
 
   background-image: radial-gradient(
       ellipse at 90% 80%,
-      rgba(255, 255, 0, 1) 0%,
+      #ffff00 0%,
       rgba(255, 255, 0, 0) 40%
     ),
-    radial-gradient(
-      ellipse at 40% 60%,
-      rgb(133, 216, 163) 0%,
-      rgb(190, 217, 200, 0) 50%
-    ),
+    radial-gradient(ellipse at 40% 60%, #85d8a3 0%, rgb(190, 217, 200, 0) 50%),
     radial-gradient(
       ellipse at 50% 100%,
       rgb(247, 185, 86) 0%,
       rgb(252, 207, 136, 0) 80%
     ),
-    radial-gradient(
-      ellipse at 10% 80%,
-      rgb(203, 132, 247) 0%,
-      rgb(243, 224, 255, 0) 100%
-    );
+    radial-gradient(ellipse at 10% 80%, #cb84f7 0%, rgb(243, 224, 255, 0) 100%);
   position: absolute;
   overflow: hidden;
   content: "";

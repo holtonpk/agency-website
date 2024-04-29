@@ -1,6 +1,8 @@
 "use client";
 import React, {useEffect} from "react";
-import {Button} from "@/components/ui/button";
+import {Button, buttonVariants} from "@/components/ui/button";
+import Link from "next/link";
+import {cn} from "@/lib/utils";
 import {
   LucideProps,
   Star,
@@ -19,7 +21,13 @@ import {
 } from "@/components/ui/accordion";
 import {IncomingMessage} from "http";
 import {BlazeLogo, FcLogo, MortyLogo} from "@/components/icons";
-import {motion, useMotionValue, useTransform, animate} from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  animate,
+  delay,
+} from "framer-motion";
 import {useInView} from "react-intersection-observer";
 
 const HomePage = () => {
@@ -40,8 +48,10 @@ const HomePage = () => {
           <Banner />
         </div>
         <Stats />
+
         <Process />
-        {/* <Testimonials /> */}
+
+        <Testimonials />
         <Faq />
         <ContactUs />
       </div>
@@ -80,7 +90,7 @@ const LoadingScreen = () => {
       </div>
       <div className="w-screen grid grid-cols-[1fr_150px]  bottom-0 absolute">
         <div className="w-full">
-          <div className="w-[75%] h-full bg-black loading-screen-loader"></div>
+          <div className="w-[75%] h-full bg-gradient-to-r rounded-r-sm bg-black loading-screen-loader  " />
         </div>
 
         <span className="w-full items-center flex  justify-center text-[4rem]">
@@ -172,7 +182,7 @@ const Hero = () => {
         </h1>
         <p className="text-xl text-center w-full">
           We elevate your brand&apos;s social media presence with organic
-          content that drives real impressions and lasting builds community.
+          content that drives real impressions and builds lasting communities.
         </p>
         <div className="h-[180px] w-[180px] relative group  mt-4">
           <svg
@@ -210,44 +220,32 @@ const Hero = () => {
           </motion.button>
         </div>
       </div>
-      {/* <div className="absolute left-0 -translate-x-1/2 rotate-90 top-1/2 -translate-y-1/2 text-lg ">
-        Elevate your brand&apos;s social media presence
-      </div>
-      <div className="absolute right-0 rotate-90 top-1/2 translate-x-1/2 -translate-y-1/2 text-lg  ">
-        Elevate your brand&apos;s social media presence
-      </div> */}
-
-      {/* <div className="flex flex-col w-[500px]">
-        <p className="text-xl font-bold">
-          Elevate your brand&apos;s social media presence with viral-worthy
-          organic content that drives real impressions and builds community.
-          <br />
-          <br />
-          We&apos;ve generated millions of impressions for our clients using a
-          formula perfected over a decade of experimentation with social
-          content.
-        </p>
-      </div> */}
-      {/* <Logo className="fill-primary h-60" /> */}
     </div>
   );
 };
 
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <div className="relative top-0 h-fit py-4 w-screen flex justify-between items-center px-8 bg-transparent">
-      <Logo className="fill-primary h-10 mb-1" />
-      <h1 className="text-4xl font1 ml-2">Whitespace Media</h1>
+      <Link className="flex items-center" href="/">
+        <Logo className="fill-primary h-10 mb-1" />
+        <h1 className="text-4xl font1 ml-2">Whitespace Media</h1>
+      </Link>
       <div className="flex gap-8 ml-auto items-center">
-        <button className=" capitalize">about</button>
+        <Link href="/#stats" className=" capitalize">
+          about
+        </Link>
         <button className="text-primary capitalize">Our Work</button>
 
-        <Button
-          variant={"outline"}
-          className=" capitalize rounded-2xl bg-primary text-background hover:bg-primary hover:text-background transition-colors duration-500"
+        <Link
+          href="/contact"
+          className={cn(
+            buttonVariants({variant: "outline"}),
+            " capitalize rounded-2xl bg-primary text-background hover:bg-primary hover:text-background transition-colors duration-500"
+          )}
         >
           Contact
-        </Button>
+        </Link>
       </div>
     </div>
   );
@@ -289,13 +287,12 @@ const Stats = () => {
       title: "Impressions",
       value: 10000000,
       description:
-        "We've generated millions of organic impressions across Instagram, TikTok and YouTube",
+        "We've generated millions of organic impressions across all platforms",
     },
     {
       title: "Leads Generated",
       value: 10000,
-      description:
-        "Our content is driving thousands of qualified leads to the point of sale every week",
+      description: "Our content is driving thousands of qualified leads week",
     },
     {
       title: "Followers",
@@ -312,30 +309,36 @@ const Stats = () => {
   ];
 
   return (
-    <div className=" text-black container mt-20">
-      {/* <h1 className="font1 text-6xl max-w-[70%]">
-          Intuition and strategy integrate the research methodology that we also
-          apply to traditional media.
-        </h1> */}
-
-      <div className="grid grid-cols-4 gap-10">
-        {/* <div className=" relative z-20 container border-black/50 mt-6  p-0  justify-center border-y-[1px]  grid grid-cols-4 divide-x-[1px] divide-black/20 border-black/20  w-full"> */}
+    <div id="stats" className="text-black container mt-20">
+      <div className="grid grid-cols-4 gap-10 relative">
         {stats.map((stat, index) => (
-          <div
+          <motion.div
             key={index}
-            className={`w-full  rounded-lg  p-4 flex items-start  justify-between flex-col  text-primary relative bg-white/40
+            className="w-full h-full "
+            variants={{
+              hidden: {y: 20, opacity: 0},
 
-        
-          
-          `}
+              visible: {
+                y: 0,
+                opacity: 1,
+                transition: {
+                  delay: 0.2 * index,
+                  duration: 0.5, // Duration of the animation for each item
+                },
+              },
+            }}
+            initial="hidden" // Start in the hidden state
+            whileInView="visible" // Animate to the visible state when in view
+            viewport={{once: true}} // Ensures animation only plays once
           >
-            <h1 className=" text-3xl font1 flex font-bold">{stat.title}</h1>
-
-            <h1 className=" text-sm flex font-bold">{stat.description}</h1>
-            <StatNumber value={stat.value} />
-
-            {/* <p className="font1 text-2xl">{stat.title}</p> */}
-          </div>
+            <div className="w-full rounded-lg p-4 flex items-start justify-between flex-col text-primary relative bg-white/40">
+              <h1 className="text-3xl font-bold capitalize font1">
+                {stat.title}
+              </h1>
+              <h2 className="text-sm font-bold ">{stat.description}</h2>
+              <StatNumber value={stat.value} />
+            </div>
+          </motion.div>
         ))}
       </div>
     </div>
@@ -368,34 +371,62 @@ const StatNumber = ({value}: {value: number}) => {
 };
 
 const Testimonials = () => {
-  return (
-    <div className="flex flex-col z-30 relative  items-center pb-20  pt-6 mt-20">
-      <div className="flex gap-4">
-        <Star className="h-12 w-12 fill-primary text-primary" />
-        <Star className="h-12 w-12 fill-primary text-primary" />
-        <Star className="h-12 w-12 fill-primary text-primary" />
-        <Star className="h-12 w-12 fill-primary text-primary" />
-        <Star className="h-12 w-12 fill-primary text-primary" />
-      </div>
-      <h1 className="text-[10rem] leading-[160px] font1 text-primary">
-        Testimonials
-      </h1>
+  const [selectedTestimonial, setSelectedTestimonial] = React.useState(0);
 
-      <div className="grid grid-cols-2 container gap-10 mt-6">
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className={`h-fit w-full bg-white/40   blurBack rounded-2xl text-2xl p-8 flex flex-col`}
-          >
-            <p className="font-bold">{testimonial.text}</p>
-            <div className="flex gap-2 items-center mt-auto">
-              <div className="h-10 w-10 relative rounded-full bg-card overflow-hidden">
-                {testimonial.logo}
-              </div>
-              <div className=" w-fit ">{testimonial.creator}</div>
+  useEffect(() => {
+    // change testimonial every 4 seconds
+    const interval = setInterval(() => {
+      setSelectedTestimonial((selectedTestimonial) => {
+        if (selectedTestimonial === testimonials.length - 1) {
+          return 0;
+        } else {
+          return selectedTestimonial + 1;
+        }
+      });
+    }, 3500);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [selectedTestimonial]);
+
+  return (
+    <div className="relative w-screen h-[600px]">
+      <div className="flex flex-col z-30 gap-10  items-center pb-20  pt-6 mt-20">
+        <div className="flex gap-4">
+          <Star className="h-12 w-12 fill-primary text-primary" />
+          <Star className="h-12 w-12 fill-primary text-primary" />
+          <Star className="h-12 w-12 fill-primary text-primary" />
+          <Star className="h-12 w-12 fill-primary text-primary" />
+          <Star className="h-12 w-12 fill-primary text-primary" />
+        </div>
+        <h1 className="text-[10rem] leading-[160px] font1 text-primary">
+          Testimonials
+        </h1>
+
+        {/* <div className="grid grid-cols-2 container gap-10 mt-6"> */}
+        {/* {testimonials.map((testimonial, index) => ( */}
+        <motion.div
+          animate={{
+            x: ["100%", "10%", "-10%", "-120%"],
+            // filter: ["blur(2px)", "blur(0px)", "blur(0px)", "blur(2px)"],
+          }}
+          transition={{duration: 3.5, times: [0, 0.1, 0.9, 1]}}
+          key={testimonials[selectedTestimonial].text}
+          className={`h-fit w-[800px] bg-white/40  atestimonial-animation blurBack rounded-2xl text-2xl p-8 flex flex-col`}
+        >
+          <p className="font-bold">{testimonials[selectedTestimonial].text}</p>
+          <div className="flex gap-2 items-center mt-6">
+            <div className="h-10 w-10 relative rounded-full bg-card overflow-hidden">
+              {testimonials[selectedTestimonial].logo}
+            </div>
+            <div className=" w-fit ">
+              {testimonials[selectedTestimonial].creator}
             </div>
           </div>
-        ))}
+        </motion.div>
+        {/* ))} */}
+        {/* </div> */}
       </div>
     </div>
   );
@@ -462,14 +493,19 @@ const Process = () => {
   return (
     <div className="bg-white/40 ml-auto blurBack right-0   h-fit w-[80%] rounded-l-xl mt-20  text-black py-10 ">
       <div className="container  p-8 px-16 flex flex-col">
-        <h1 className="font1 text-6xl w-[70%] ">
-          Starting with a new team can be daunting, but we make it easy.
-        </h1>
+        <motion.h1
+          initial={{opacity: 0, y: 50}}
+          whileInView={{opacity: 1, y: 0}}
+          viewport={{once: true, amount: 0.3}}
+          className="font1 text-6xl  "
+        >
+          Starting with a new team can be daunting, <br /> but we make it easy.
+        </motion.h1>
         <div className="flex flex-col mt-10 ">
           <motion.div
-            initial={{opacity: 0, translateY: "100%"}}
-            whileInView={{opacity: 1, translateY: "0%"}}
-            viewport={{once: true}}
+            initial={{opacity: 0, y: 200}}
+            whileInView={{opacity: 1, y: 0}}
+            viewport={{once: true, amount: 0.3}}
             className="gap-8 flex flex-col"
           >
             <div className="w-full h-[1px] bg-black/20"></div>
@@ -485,9 +521,9 @@ const Process = () => {
             <div className="w-full h-[1px] bg-black/20"></div>
           </motion.div>
           <motion.div
-            initial={{opacity: 0, translateY: "100%"}}
-            whileInView={{opacity: 1, translateY: "0%"}}
-            viewport={{once: true}}
+            initial={{opacity: 0, y: 200}}
+            whileInView={{opacity: 1, y: 0}}
+            viewport={{once: true, amount: 0.3}}
             className="gap-8 flex flex-col"
           >
             <div className="flex gap-10 justify-between items-center px-6 h-[100px] mt-8">
@@ -503,9 +539,9 @@ const Process = () => {
           </motion.div>
 
           <motion.div
-            initial={{opacity: 0, translateY: "100%"}}
-            whileInView={{opacity: 1, translateY: "0%"}}
-            viewport={{once: true}}
+            initial={{opacity: 0, y: 200}}
+            whileInView={{opacity: 1, y: 0}}
+            viewport={{once: true, amount: 0.3}}
             className="gap-8 flex flex-col"
           >
             <div className="flex gap-10 justify-between items-center px-6 h-[100px] mt-8">
@@ -528,15 +564,18 @@ const Process = () => {
 const ContactUs = () => {
   return (
     <div className="container relative">
-      <button className="relative w-[90%] mx-auto rounded-full h-[400px] flex items-center justify-center text-8xl font1 mb-20 font-bold hover:bg-[#181818] bg-black/10 blurBack hover:text-background transition-colors duration-500 group">
+      <Link
+        href="/contact"
+        className="relative w-[90%] mx-auto rounded-full h-[400px] flex items-center justify-center text-8xl font1 mb-20 font-bold hover:bg-[#181818] bg-black/10 blurBack hover:text-background transition-colors duration-500 group"
+      >
         Let&apos;s get Started
         <ArrowRight className="h-16 w-16 ml-4 group-hover:translate-x-[50px] transition-transform duration-500" />
-      </button>
+      </Link>
     </div>
   );
 };
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <div className="w-full h-fit bg-primary relative p-2 pt-6 flex flex-col gap-3 items-center">
       <div className="flex items-center mx-auto">

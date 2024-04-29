@@ -389,7 +389,7 @@
 
 .loading-screen-animation {
   animation: loading-screen 1s ease-in-out forwards;
-  animation-delay: 3s;
+  animation-delay: 2s;
 }
 
 @keyframes loading-screen {
@@ -403,7 +403,7 @@
 }
 
 .loading-screen-loader {
-  animation: loading-screen-loader 2.85s ease-in-out forwards;
+  animation: loading-screen-loader 2s ease-in-out forwards;
 }
 
 @keyframes loading-screen-loader {
@@ -412,5 +412,31 @@
   }
   to {
     width: 100%;
+  }
+}
+
+.testimonial-animation {
+  animation: testimonial-animation-1 4s linear forwards;
+}
+
+@keyframes testimonial-animation-1 {
+  0% {
+    filter: blur(2px);
+    transform: translateX(100%);
+  }
+  10% {
+    filter: blur(0px);
+
+    transform: translateX(20%);
+  }
+  90% {
+    filter: blur(0px);
+
+    transform: translateX(-20%);
+  }
+  100% {
+    filter: blur(2px);
+
+    transform: translateX(-120%);
   }
 }
