@@ -34,12 +34,12 @@ export const Stats = () => {
   ];
 
   return (
-    <div id="stats" className="text-black container mt-20">
-      <div className="grid grid-cols-4 gap-10 relative">
+    <div id="stats" className="text-black px-4 md:container md:mt-20">
+      <div className="grid  md:grid-cols-4 gap-4 md:gap-10 relative">
         {stats.map((stat, index) => (
           <motion.div
             key={index}
-            className="w-full h-full "
+            className="w-full  h-full "
             variants={{
               hidden: {y: 20, opacity: 0},
 
@@ -56,11 +56,13 @@ export const Stats = () => {
             whileInView="visible" // Animate to the visible state when in view
             viewport={{once: true}} // Ensures animation only plays once
           >
-            <div className="w-full rounded-lg p-4 flex items-start justify-between flex-col text-primary relative bg-white/40">
+            <div className="w-full rounded-lg p-4 flex items-center md:items-start justify-between flex-col text-primary relative bg-white/40">
               <h1 className="text-3xl font-bold capitalize font1">
                 {stat.title}
               </h1>
-              <h2 className="text-sm font-bold ">{stat.description}</h2>
+              <h2 className="text-sm font-bold text-center md:text-left">
+                {stat.description}
+              </h2>
               <StatNumber value={stat.value} />
             </div>
           </motion.div>

@@ -5,11 +5,16 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <div className="relative top-0 h-fit py-4 w-screen flex justify-between items-center px-8 bg-transparent">
-      <Link className="flex items-center" href="/">
-        <Logo className="fill-primary h-10 mb-1" />
-        <h1 className="text-4xl font1 ml-2">Whitespace Media</h1>
+      <Link
+        className="flex items-center flex-col md:flex-row mx-auto md:mx-0"
+        href="/"
+      >
+        <Logo className="fill-primary h-4 md:h-10 mb-1" />
+        <h1 className="text-xl whitespace-nowrap md:text-4xl font1 ml-2">
+          Whitespace Media
+        </h1>
       </Link>
-      <div className="flex gap-8 ml-auto items-center">
+      <div className="hidden md:flex gap-8 ml-auto items-center ">
         <Link href="/#stats" className=" capitalize">
           about
         </Link>

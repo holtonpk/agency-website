@@ -46,7 +46,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="bg-white/40 blurBack rounded-xl w-[60%] mt-2 h-fit mx-auto p-8 flex flex-col">
+    <div className="bg-white/40 blurBack rounded-xl md:w-[60%] mt-2 h-fit mx-auto p-8 flex flex-col">
       <h1 className="font1 text-6xl">Let&apos;s get in touch</h1>
       <div className="grid gap-3">
         <div className="grid gap-1">

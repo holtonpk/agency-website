@@ -1,6 +1,6 @@
 "use client";
 import {motion} from "framer-motion";
-
+import {useRouter} from "next/navigation";
 export const Banner = () => {
   return (
     <div className="w-[100vw] relative overflow-hidden   h-[140px] -rotate-[0deg]">
@@ -8,7 +8,7 @@ export const Banner = () => {
         {skills.map((skill, index) => (
           <h1
             key={index}
-            className={`text-10xl whitespace-nowrap  font-bold
+            className={`text-6xl md:text-[150px] whitespace-nowrap  font-bold
             ${index % 2 === 0 ? "normal" : "stroke"}
             
             `}
@@ -22,23 +22,26 @@ export const Banner = () => {
 };
 
 export const Hero = () => {
+  const router = useRouter();
+
+  const goToContact = () => {
+    router.push("/contact");
+  };
   return (
-    <div className="container z-30 relative  flex flex-col items-center gap-10   w-[700px]">
+    <div className="container z-30 relative  flex flex-col items-center gap-10   md:w-[700px]">
       <div className="flex flex-col items-center ">
-        <h1 className="text-[6rem] leading-[6rem] bg-clip-text text-center text-transparent bg-gradient-to-l bg-black   py-2   font1">
+        <h1 className="text-5xl md:text-[6rem] md:leading-[6rem] bg-clip-text text-center text-transparent bg-gradient-to-l bg-black   py-2   font1">
           Organically grow
           <br /> your startup
         </h1>
-        <p className="text-xl text-center w-full">
+        <p className="max-w-[80%] md:text-xl text-center w-full">
           We elevate your brand&apos;s social media presence with organic
           content that drives real impressions and builds lasting communities.
         </p>
-        <div className="h-[180px] w-[180px] relative group  mt-4">
+        <div className=" relative group  mt-4">
           <svg
-            className=" bg-transparent hero-animate-spin group-hover:duration-1000 "
+            className=" bg-transparent hero-animate-spin group-hover:duration-1000 h-[180px] w-[180px]"
             viewBox="0 0 100 100"
-            height={"180px"}
-            width={"180px"}
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -52,13 +55,14 @@ export const Hero = () => {
             />
 
             <text>
-              <textPath href="#circlePath" className="text-[12px] font-bold">
+              <textPath href="#circlePath" className="text-[12px] font-bold ">
                 Book a call today ★ Book a call today ★
               </textPath>
             </text>
           </svg>
 
           <motion.button
+            onClick={goToContact}
             initial={{scale: 1, translateX: "-50%", translateY: "-50%"}}
             whileHover={{scale: 1.1, translateX: "-50%", translateY: "-50%"}}
             whileTap={{scale: 0.9}}

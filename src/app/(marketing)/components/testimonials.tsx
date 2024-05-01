@@ -25,16 +25,16 @@ export const Testimonials = () => {
   }, [selectedTestimonial]);
 
   return (
-    <div className="relative w-screen h-[600px]">
-      <div className="flex flex-col z-30 gap-10  items-center pb-20  pt-6 mt-20">
+    <div className="relative w-screen md:h-[600px]  h-[550px]">
+      <div className="flex flex-col z-30 gap-4 md:gap-10  items-center pb-20  pt-6 mt-20">
         <div className="flex gap-4">
-          <Star className="h-12 w-12 fill-primary text-primary" />
-          <Star className="h-12 w-12 fill-primary text-primary" />
-          <Star className="h-12 w-12 fill-primary text-primary" />
-          <Star className="h-12 w-12 fill-primary text-primary" />
-          <Star className="h-12 w-12 fill-primary text-primary" />
+          <Star className="h-8 w-8 md:h-12 md:w-12 fill-primary text-primary" />
+          <Star className="h-8 w-8 md:h-12 md:w-12 fill-primary text-primary" />
+          <Star className="h-8 w-8 md:h-12 md:w-12 fill-primary text-primary" />
+          <Star className="h-8 w-8 md:h-12 md:w-12 fill-primary text-primary" />
+          <Star className="h-8 w-8 md:h-12 md:w-12 fill-primary text-primary" />
         </div>
-        <h1 className="text-[10rem] leading-[160px] font1 text-primary">
+        <h1 className="text-7xl md:text-[10rem] md:leading-[160px] font1 text-primary">
           Testimonials
         </h1>
 
@@ -47,7 +47,7 @@ export const Testimonials = () => {
           }}
           transition={{duration: 3.5, times: [0, 0.1, 0.9, 1]}}
           key={testimonials[selectedTestimonial].text}
-          className={`h-fit w-[800px] bg-white/40  atestimonial-animation blurBack rounded-2xl text-2xl p-8 flex flex-col`}
+          className={`h-fit w-[80vw] md:w-[800px] bg-white/40  atestimonial-animation blurBack rounded-2xl text-2xl p-8 flex flex-col`}
         >
           <p className="font-bold">{testimonials[selectedTestimonial].text}</p>
           <div className="flex gap-2 items-center mt-6">

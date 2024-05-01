@@ -21,13 +21,17 @@ const HomePage = () => {
       <LoadingScreen />
       <div className=" ">
         <Background />
-        <div className="h-screen justify-between    flex flex-col ">
+        <div className="md:h-screen justify-between  min-w-screen   flex flex-col ">
           <Navbar />
-          <div className="rotate-[270deg] absolute left-0 top-[40%] -translate-y-1/2 ">
-            <h1 className="text-xl font1">- Whitespace Media est. 2022 -</h1>
+          <div className="rotate-[270deg] absolute -left-16 md:left-0 top-[30%] md:top-[40%] -translate-y-1/2 ">
+            <h1 className="text-md md:text-xl font1">
+              - Whitespace Media est. 2022 -
+            </h1>
           </div>
-          <div className="rotate-[90deg] absolute right-0 top-[40%] -translate-y-1/2 ">
-            <h1 className="text-xl font1">- Speed - Insights - Seemless - </h1>
+          <div className="rotate-[90deg] absolute -right-16 md:right-0 top-[30%] md:top-[40%] -translate-y-1/2 ">
+            <h1 className="text-md md:text-xl font1">
+              - Speed - Insights - Seemless -{" "}
+            </h1>
           </div>
           <Hero />
           <Banner />
