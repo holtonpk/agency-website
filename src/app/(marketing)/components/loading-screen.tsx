@@ -23,7 +23,7 @@ const LoadingScreen = () => {
   }, []);
 
   return (
-    <div className="fixed h-screen w-screen bg-[#F1F4F7] top-0 left-0 z-50 loading-screen-animation">
+    <div className="fixed h-screen w-screen bg-[#F1F4F7] top-0 left-0 z-50 loading-screen-animation hidden md:block">
       <div className="flex items-center flex-col absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <Logo className="fill-primary h-10 mb-1" />
         <h1 className="text-4xl font1 ml-2">Whitespace Media</h1>
